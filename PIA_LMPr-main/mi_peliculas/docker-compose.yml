@@ -14,8 +14,11 @@ services:
       - mysql_data:/var/lib/mysql
 
   web:
-    build: ./mi_peliculas
+    build: .
+    command: python manage.py runserver 0.0.0.0:8000
     restart: on-failure
+    volumes:
+      - .:/app
     ports:
       - "8000:8000"
     depends_on:
